@@ -8,7 +8,7 @@ metaDescription: Synthetic monitoring multi-location alert conditions allow you 
 translationType: machine
 ---
 
-import syntheticsMultiLocationAlertDiagram0 from 'images/synthetics-multi-location-alert-diagram_0.png'
+import accountsSyntheticsMultiLocationAlertDiagram from 'images/accounts_screenshot-full_synthetics-multi-location-alert-diagram.webp'
 
 マルチロケーションのシンセティックモニタリングのアラート条件では、特定の数のロケーションが同時に故障した場合に通知するモニターを作成することができます。
 
@@ -66,7 +66,7 @@ import syntheticsMultiLocationAlertDiagram0 from 'images/synthetics-multi-locati
       </td>
 
       <td>
-        この機能には、1アカウントあたり1000条件の制限がありますが、インフラストラクチャーのアラート条件の種類によっては、この制限にもカウントされます。制限を超えた旨の通知を受けた場合は、アカウント担当者または [サポート](https://support.newrelic.com/) にお問い合わせください。
+        この機能には、アカウントごとに 1000 件の条件という制限がありますが、一部の種類のインフラストラクチャ アラート条件もこの制限にカウントされます。制限を超えたという通知を受け取った場合は、New Relic の担当者または [サポート](https://support.newrelic.com/) にお問い合わせください。
       </td>
     </tr>
 
@@ -87,7 +87,7 @@ import syntheticsMultiLocationAlertDiagram0 from 'images/synthetics-multi-locati
 <img
   title="synthetics-multi-location-alert-diagram.png"
   alt="Synthetics multi-location alert condition diagram"
-  src={syntheticsMultiLocationAlertDiagram0}
+  src={accountsSyntheticsMultiLocationAlertDiagram}
 />
 
 <figcaption>
@@ -98,7 +98,7 @@ import syntheticsMultiLocationAlertDiagram0 from 'images/synthetics-multi-locati
 
 条件を作成する前に、 [Rules for Multi-Location Condition](#rules) をお読みください。
 
-1. **[one.newrelic.com](https://one.newrelic.com/ "新しいウィンドウにリンクが開きます。")**のトップナビゲーションで、\[**アラートとAI** ]をクリックし、\[**アラート条件（ポリシー）** ]をクリックし[て、条件を作成する](/docs/alerts/new-relic-alerts/defining-conditions/define-alert-conditions#create-condition)プロセスを開始します。
+1. **[one.newrelic.com](https://one.newrelic.com/all-capabilities) > Alerts & AI > Alert conditions (Policies)**に移動[し、条件を作成する](/docs/alerts/new-relic-alerts/defining-conditions/define-alert-conditions#create-condition)プロセスを開始します。
 2. **Synthetics** をクリックし、次に **Multiple location failures** をクリックします。
 
 <Callout variant="important">
@@ -108,5 +108,7 @@ import syntheticsMultiLocationAlertDiagram0 from 'images/synthetics-multi-locati
 ## APIを使った条件出し [#api]
 
 条件を作成する前に、 [Rules for Multi-Location Condition](#rules) をお読みください。
+
+たとえば、複数の場所の条件の REST API 呼び出しについて [は、アラートの REST API 呼び出しに関する](/docs/alerts-applied-intelligence/new-relic-alerts/advanced-alerts/rest-api-alerts/rest-api-calls-alerts/#multilocation-synthetics-conditions) ドキュメントを参照してください。
 
 アラートREST APIを使用してマルチロケーションの条件を管理するには、 [REST APIエクスプローラ](https://rpm.newrelic.com/api/explore/alerts_location_failure_conditions/create) を使用します。

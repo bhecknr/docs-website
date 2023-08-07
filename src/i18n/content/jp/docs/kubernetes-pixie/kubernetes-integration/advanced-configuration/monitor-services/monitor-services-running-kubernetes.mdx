@@ -192,7 +192,7 @@ newrelic-infrastructure:
 
 #### 統合が機能していることを確認します
 
-**[one.newrelic.com](http://one.newrelic.com) >インフラストラクチャ**に移動し、**サードパーティサービス**を選択してから、サービスのダッシュボードを選択します。報告されているデータが表示されます。
+**[one.newrelic.com](https://one.newrelic.com/all-capabilities) > Infrastructure**に移動し、 **Third party services**を選択してから、サービスのダッシュボードを選択します。報告されているデータが表示されます。
 
 そこにデータが表示されない場合は、統合の実行に必要なパラメーターが欠落しているか、ターゲットサービスに到達できない可能性があります。次のコマンドを実行して、統合のログを取得できます。
 
@@ -335,3 +335,7 @@ data:
       - name: nri-redis
         # ...
 ```
+
+## 報告されたデータの使用方法 [#how-to-use-data]
+
+[ここで](https://docs.newrelic.com/docs/kubernetes-pixie/kubernetes-integration/understand-use-data/find-use-your-kubernetes-data/) Kubernetes データを見つけて使用する方法について詳しく学ぶことができ、K8sServiceSample データ スキーマを [ここで](https://docs.newrelic.com/attribute-dictionary/?event=K8sServiceSample)確認できます。

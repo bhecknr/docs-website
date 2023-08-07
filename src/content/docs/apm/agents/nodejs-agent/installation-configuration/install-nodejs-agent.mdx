@@ -14,6 +14,8 @@ redirects:
   - /docs/agents/nodejs-agent/installation-and-configuration/installing-and-maintaining-nodejs
   - /docs/agents/nodejs-agent/installation-configuration/installing-maintaining-nodejs
   - /docs/agents/nodejs-agent/installation-configuration/install-maintain-nodejs
+signupBanner:
+  text: Monitor and improve your entire stack. 100GB free. Forever.
 ---
 
 To complete a basic Node.js agent installation, you can use our guided installation for an automated install, (choose EU if you're in the EU) or follow the instructions in this document. Either way, you need a New Relic account if you don't already have one. ([It's free, forever!](/docs/accounts/accounts-billing/new-relic-one-pricing-billing/new-relic-one-pricing-billing/#how-pricing-works))
@@ -56,19 +58,19 @@ Our Node.js agent is publicly available on the [Node Package Manager (npm) repos
 To install the Node.js agent:
 
 1. Create a New Relic account. Don't have one? [Sign up for free!](https://newrelic.com/signup) No credit card required.
-2. Ensure you meet the [system requirements](/docs/agents/nodejs-agent/getting-started/compatibility-requirements-nodejs-agent). In particular, make sure you use a supported Node version.
+2. Ensure you meet the [system requirements](/docs/agents/nodejs-agent/getting-started/compatibility-requirements-nodejs-agent). In particular, make sure you use a supported Node.js version.
 3. Use the command `npm install newrelic --save` for each application you want to monitor.
 4. From `node_modules/newrelic`, copy `newrelic.js` into the root directory of your app.
 5. Configure agent via the `newrelic.js` file or via [environment variable](/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#environment):
 
-   * Customize the `license_key` setting with [your license key](/docs/apis/intro-apis/new-relic-api-keys/#ingest-license-key).
+   * Customize the `license_key` setting with <InlinePopover type="licenseKey" />.
    * Customize the [`app_name`](/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#app_name) setting with one or more [meaningful app names](/docs/apm/new-relic-apm/installation-and-configuration/naming-your-application).
 6. Add `require('newrelic');` as the first line of your app's main module.
 
 <Callout variant="important">
-  If you are using [Babel](https://babeljs.io/docs/en/index.html) or a similar transpiler you can safeguard against any issues related to module load order by utilizing the [Node command line option '-r'](https://nodejs.org/api/cli.html#-r---require-module) to preload the 'newrelic' module at application startup. For example, if your application's entry point is `./dist/server.js` then you would use the require flag like so:
+  If you are using [Babel](https://babeljs.io/docs/en/index.html) or a similar transpiler you can safeguard against any issues related to module load order by utilizing the [Node.js command line option `-r`](https://nodejs.org/api/cli.html#-r---require-module) to preload the `newrelic` module at application startup. For example, if your application's entry point is `./dist/server.js` then you would use the require flag like so:
 
-  ```
+  ```bash
   node -r newrelic ./dist/server.js
   ```
   If you are unable to `require('newrelic');` as the first line of your app's main module and you are unable to use the require flag as above (e.g. asynchronously loading api keys from a remote location during application bootstrapping), you may also add stock instrumentation to an already loaded [supported module](https://github.com/newrelic/node-newrelic/blob/0113eb5f0e707dc662a17d262a841503bab88841/lib/instrumentations.js#L6#L6) by using [`newrelic.instrumentLoadedModule`](/docs/apm/agents/nodejs-agent/api-guides/nodejs-agent-api/#instrumentLoadedModule):
@@ -92,6 +94,8 @@ To install the Node.js agent:
 8. Generate some traffic, then wait a few minutes for data to appear in the [APM UI](/docs/apm/applications-menu/monitoring/apm-overview-page).
 
 You can further [customize your agent behavior](/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration) via `newrelic.js` or an environment variable. To keep the agent configuration separate from your app, edit the [`NEW_RELIC_HOME` environmental variable](/docs/agents/nodejs-agent/installation-configuration/nodejs-agent-configuration#home).
+
+<InstallFeedback />
 
 ## View logs for your APM and infrastructure data [#logs-context]
 

@@ -8,13 +8,13 @@ metaDescription: How to use the New Relic NerdGraph API explorer.
 translationType: machine
 ---
 
-import createAccount from 'images/create-account.png'
+import apisanddataNerdGraphCreateUserKey from 'images/apis-and-data_screenshot-crop_NerdGraph-create-user-key.webp'
 
-import graphqlDocumentation from 'images/graphql-documentation.png'
+import apisanddataNerdGraphInternalDocs from 'images/apis-and-data_screenshot-crop_NerdGraph-internal-docs.webp'
 
-import mutationExample from 'images/mutation-example.png'
+import apisanddataNerdGraphMutationExample from 'images/apis-and-data_screenshot-full_NerdGraph-mutation-example.webp'
 
-import toolsMenu from 'images/tools-menu.png'
+import apisanddataNerdGraphToolsMenu from 'images/apis-and-data_screenshot-crop_NerdGraph-tools-menu.webp'
 
 NerdGraphは、データをクエリし、NewRelic機能を構成するためのメインAPIです。NerdGraphを使用してAPIリクエストを行う一般的な方法の1つは、NerdGraphエクスプローラーを使用することです。
 
@@ -22,8 +22,8 @@ NerdGraphは、データをクエリし、NewRelic機能を構成するための
 
 NerdGraphエクスプローラーを見つけるには：
 
-* EUの場合：New Relicアカウントが[EUデータセンター](/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers)を使用している場合は、 [api.eu.newrelic.com/graphiql](https://api.eu.newrelic.com/graphiql)にアクセスしてください。
-* EU外：アカウントがEU外にある場合は、 [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql)を使用してください。
+* EU: New Relic 組織が [EU データセンター](/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers)を使用している場合は、 [api.eu.newrelic.com/graphiql](https://api.eu.newrelic.com/graphiql)にアクセスしてください。
+* EU 以外: 組織が EU データセンターを使用していない場合は、 [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql)にアクセスしてください。
 
 ## NerdGraphエクスプローラーとは何ですか？ [#overview]
 
@@ -39,12 +39,12 @@ NerdGraphエクスプローラーを使用して、データスキーマを探�
 
 [エクスプローラーに移動し、](#find) NewRelicのユーザーIDとパスワードを使用してログインします。
 
-有効な[NewRelicユーザーキー](/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key)があることを確認してください。NerdGraphエクスプローラーから作成するか、 [APIキーUI](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher)で表示して作成できます。
+有効な New Relic があることを確認してください <InlinePopover type="userKey"/>.NerdGraph エクスプローラーまたはビューから作成し、 [API キー UI](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher)で作成できます。
 
 <img
   title="Create a user key"
   alt="Create a user key"
-  src={createAccount}
+  src={apisanddataNerdGraphCreateUserKey}
 />
 
 次に、エクスプローラーの使い方を学ぶのに役立ついくつかの手順を説明します。
@@ -77,7 +77,7 @@ NerdGraphエクスプローラーを使用して、データスキーマを探�
 <img
   title="NerdGraph docs and tooltips"
   alt="NerdGraph docs and tooltips"
-  src={graphqlDocumentation}
+  src={apisanddataNerdGraphInternalDocs}
 />
 
 ## ステップ3.クエリにフィールドを追加します [#add-fields]
@@ -111,7 +111,7 @@ GraphQLでは、[ミュー](https://graphql.org/learn/queries/#mutations)テー�
 <img
   title="Mutation example"
   alt="Mutation example"
-  src={mutationExample}
+  src={apisanddataNerdGraphMutationExample}
 />
 
 この場合、エンティティにカスタムタグを追加しようとしています。`errors`を選択しないと、エディターが文句を言うことに注意してください。ミューテーションには、バックエンドで操作がどのように実行されたかを通知する方法が必要です（リクエストが失敗すると応答がnullになります）。
@@ -130,7 +130,7 @@ GraphQLでは、[ミュー](https://graphql.org/learn/queries/#mutations)テー�
 <img
   title="NerdGraph tools menu"
   alt="NerdGraph tools menu"
-  src={toolsMenu}
+  src={apisanddataNerdGraphToolsMenu}
 />
 
 ```bash
@@ -149,8 +149,7 @@ newrelic nerdgraph query '{
     }
     account(id: 12345678)
   }
-}
-'
+}'
 ```
 
 ## 次のステップ [#next-steps]
@@ -172,27 +171,27 @@ NerdGraphの詳細と、開発者コミュニティの他のプロジェクト�
   >
     `actor`（New Relicの正規ユーザー）がアクセスできるアカウント名のクエリを実行できます。
 
-    ```
+    ```graphql
     query {
-       actor {
-          account(id: <var>YOUR_ACCOUNT_ID</var>) {
-             name
-          }
-       }
+      actor {
+        account(id: YOUR_ACCOUNT_ID) {
+          name
+        }
+      }
     }
     ```
 
     応答にはリクエストで定義したクエリ構造が反映されるため、希望する特定のデータを簡単に要求できます。
 
-    ```
+    ```json
     {
       "data": {
-          "actor": {
-             "account": {
-                "name": "<var>Data Nerd</var>"
-             }
+        "actor": {
+          "account": {
+            "name": "Data Nerd"
           }
-       }
+        }
+      }
     }
     ```
   </Collapser>
@@ -203,20 +202,20 @@ NerdGraphの詳細と、開発者コミュニティの他のプロジェクト�
   >
     グラフ構造には、クエリが複雑になった場合の機能が示されます。たとえば、1回のリクエストでユーザー情報やアカウント情報のクエリを実行し、NRQLクエリを実行できます。REST APIを使用すると、3つの異なるエンドポイントに対する3つの異なるリクエストが必要になります。
 
-    ```
+    ```graphql
     query {
-       actor {
-          account(id: <var>YOUR_ACCOUNT_ID</var>) {
-             name
-             nrql(query: "<a href="/docs/insights/nrql-new-relic-query-language/nrql-resources/nrql-syntax-components-functions#state-select">SELECT</a> * <a href="/docs/insights/nrql-new-relic-query-language/nrql-resources/nrql-syntax-components-functions#sel-from">FROM</a> Transaction") {
-                results
-             }
+      actor {
+        account(id: YOUR_ACCOUNT_ID) {
+          name
+          nrql(query: "SELECT * FROM Transaction") {
+            results
           }
-          user {
-             name
-             id
-          }
-       }
+        }
+        user {
+          name
+          id
+        }
+      }
     }
     ```
   </Collapser>

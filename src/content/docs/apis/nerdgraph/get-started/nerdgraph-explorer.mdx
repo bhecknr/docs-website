@@ -8,13 +8,14 @@ metaDescription: How to use the New Relic NerdGraph API explorer.
 redirects:
 ---
 
-import createAccount from 'images/create-account.png'
+import apisanddataNerdGraphCreateUserKey from 'images/apis-and-data_screenshot-crop_NerdGraph-create-user-key.webp'
 
-import graphqlDocumentation from 'images/graphql-documentation.png'
+import apisanddataNerdGraphInternalDocs from 'images/apis-and-data_screenshot-crop_NerdGraph-internal-docs.webp'
 
-import mutationExample from 'images/mutation-example.png'
+import apisanddataNerdGraphMutationExample from 'images/apis-and-data_screenshot-full_NerdGraph-mutation-example.webp'
 
-import toolsMenu from 'images/tools-menu.png'
+import apisanddataNerdGraphToolsMenu from 'images/apis-and-data_screenshot-crop_NerdGraph-tools-menu.webp'
+
 
 NerdGraph is our main API for querying data and making configurations to New Relic features. One popular way to use NerdGraph and make API requests is with our NerdGraph explorer. 
 
@@ -22,8 +23,8 @@ NerdGraph is our main API for querying data and making configurations to New Rel
 
 To find the NerdGraph explorer: 
 
-* In the EU: If your New Relic account uses an [EU data center](/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers), go to [api.eu.newrelic.com/graphiql](https://api.eu.newrelic.com/graphiql).
-* Outside the EU: If your account is outside the EU, use [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql).
+* EU: If your New Relic organization uses an [EU data center](/docs/using-new-relic/welcome-new-relic/get-started/our-eu-us-region-data-centers), go to [api.eu.newrelic.com/graphiql](https://api.eu.newrelic.com/graphiql).
+* Outside EU: If your organization doesn't use an EU data center, go to [api.newrelic.com/graphiql](https://api.newrelic.com/graphiql).
 
 ## What is the NerdGraph explorer? [#overview]
 
@@ -39,12 +40,12 @@ Before you do the lessons here, be sure you've reviewed [Introduction to NerdGra
 
 Go to [the explorer](#find) and log in using your New Relic user ID and password.
 
-Make sure you have a valid [New Relic user key](/docs/apis/get-started/intro-apis/types-new-relic-api-keys#user-api-key). You can create one from the NerdGraph explorer or view and create them in the [API keys UI](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher).
+Make sure you have a valid New Relic <InlinePopover type="userKey" />. You can create one from the NerdGraph explorer or view and create them in the [API keys UI](https://one.newrelic.com/launcher/api-keys-ui.api-keys-launcher).
 
 <img
   title="Create a user key"
   alt="Create a user key"
-  src={createAccount}
+  src={apisanddataNerdGraphCreateUserKey}
 />
 
 Next we'll walk you through some steps that will help you learn to use the explorer. 
@@ -77,7 +78,7 @@ Click the **Play** button to see the result: It has almost the same shape as the
 <img
   title="NerdGraph docs and tooltips"
   alt="NerdGraph docs and tooltips"
-  src={graphqlDocumentation}
+  src={apisanddataNerdGraphInternalDocs}
 />
 
 ## Step 3. Add more fields to your query [#add-fields]
@@ -111,7 +112,7 @@ Ready for your first mutation?
 <img
   title="Mutation example"
   alt="Mutation example"
-  src={mutationExample}
+  src={apisanddataNerdGraphMutationExample}
 />
 
 
@@ -131,7 +132,7 @@ Let's say that you've built a NerdGraph query you're happy with and you want to 
 <img
   title="NerdGraph tools menu"
   alt="NerdGraph tools menu"
-  src={toolsMenu}
+  src={apisanddataNerdGraphToolsMenu}
 />
 
 ```bash
@@ -150,8 +151,7 @@ newrelic nerdgraph query '{
     }
     account(id: 12345678)
   }
-}
-'
+}'
 ```
 
 ## Next steps [#next-steps]
@@ -173,27 +173,27 @@ Here are some other examples of NerdGraph requests that may be helpful:
   >
     You can query for the name of an account that an `actor` (a New Relic authorized user) has access to:
 
-    ```
+    ```graphql
     query {
-       actor {
-          account(id: <var>YOUR_ACCOUNT_ID</var>) {
-             name
-          }
-       }
+      actor {
+        account(id: YOUR_ACCOUNT_ID) {
+          name
+        }
+      }
     }
     ```
 
     The response will mirror the query structure you defined in the request, making it easy to ask for the specific data that you want.
 
-    ```
+    ```json
     {
       "data": {
-          "actor": {
-             "account": {
-                "name": "<var>Data Nerd</var>"
-             }
+        "actor": {
+          "account": {
+            "name": "Data Nerd"
           }
-       }
+        }
+      }
     }
     ```
   </Collapser>
@@ -204,20 +204,20 @@ Here are some other examples of NerdGraph requests that may be helpful:
   >
     The graph structure shows its capabilities when queries become more complex. For example, you can query for user information, account information, and make a NRQL query with one request. With REST API, this would take three different requests to three different endpoints.
 
-    ```
+    ```graphql
     query {
-       actor {
-          account(id: <var>YOUR_ACCOUNT_ID</var>) {
-             name
-             nrql(query: "<a href="/docs/insights/nrql-new-relic-query-language/nrql-resources/nrql-syntax-components-functions#state-select">SELECT</a> * <a href="/docs/insights/nrql-new-relic-query-language/nrql-resources/nrql-syntax-components-functions#sel-from">FROM</a> Transaction") {
-                results
-             }
+      actor {
+        account(id: YOUR_ACCOUNT_ID) {
+          name
+          nrql(query: "SELECT * FROM Transaction") {
+            results
           }
-          user {
-             name
-             id
-          }
-       }
+        }
+        user {
+          name
+          id
+        }
+      }
     }
     ```
   </Collapser>
